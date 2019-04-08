@@ -1,0 +1,17 @@
+export const LOGIN = {
+  REDIRECT: 'LOGIN_REDIRECT',
+  CALLBACK: 'LOGIN_CALLBACK',
+  SUCCESS: 'LOGIN_SUCCESS',
+  FAILURE: 'LOGIN_FAILURE',
+
+  ENDPOINTS: {
+    OAUTH: '/oauth/redirect',
+    CALLBACK: '/callback'
+  }
+};
+
+export const LOGOUT = {
+  REQUEST: 'LOGOUT_REQUEST',
+  SUCCESS: 'LOGOUT_SUCCESS',
+  FAILURE: 'LOGOUT_FAILURE'
+};
