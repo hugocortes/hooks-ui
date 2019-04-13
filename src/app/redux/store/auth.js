@@ -1,6 +1,6 @@
 import { AUTH } from '../constants';
 
-const defaultState = {};
+let defaultState;
 let session = localStorage.getItem(AUTH.STORAGE.SESSION);
 if (session) {
   session = JSON.parse(session);
@@ -9,10 +9,13 @@ if (session) {
   if (isExpired) {
     localStorage.removeItem(AUTH.STORAGE.SESSION);
   } else {
-    defaultState.hasRedirected = true;
-    defaultState.isAuthenticated = true;
-    defaultState.session = session;
+    defaultState = {
+      hasRedirected: true,
+      isAuthenticated: true,
+      session,
+    };
   }
 }
+const exported = defaultState;
 
-export default defaultState;
+export default exported;

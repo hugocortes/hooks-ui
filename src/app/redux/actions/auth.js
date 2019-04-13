@@ -11,7 +11,7 @@ function redirectAction(redirectURI) {
   };
 }
 
-function authenticatedAction(session) {
+function authenticateAction(session) {
   return {
     type: AUTH.LOGIN.SUCCESS,
     session,
@@ -40,7 +40,7 @@ export function redirect() {
   };
 }
 
-export function authenticateAction(payload) {
+export function authenticate(payload) {
   return async dispatch => {
     try {
       const state = localStorage.getItem(AUTH.STORAGE.STATE);
@@ -58,7 +58,7 @@ export function authenticateAction(payload) {
 
       localStorage.setItem(AUTH.STORAGE.SESSION, JSON.stringify(session));
       localStorage.removeItem(AUTH.STORAGE.STATE);
-      return dispatch(authenticatedAction(session));
+      return dispatch(authenticateAction(session));
     } catch (error) {
       return dispatch(errorAction('Failed to authenticate'));
     }
