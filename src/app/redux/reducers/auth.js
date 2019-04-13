@@ -2,39 +2,39 @@ import { AUTH } from '../constants';
 
 const deafultState = {
   hasRedirected: false,
-  isAuthenticated: false
+  isAuthenticated: false,
 };
 
 export default (state = deafultState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case AUTH.LOGIN.REDIRECT:
       return {
         ...state,
         hasRedirected: false,
         isAuthenticated: false,
-        redirectURI: action.redirectURI
-      }
+        redirectURI: action.redirectURI,
+      };
     case AUTH.LOGIN.CALLBACK:
       return {
         ...state,
         hasRedirected: true,
-        isAuthenticated: false
-      }
+        isAuthenticated: false,
+      };
     case AUTH.LOGIN.SUCCESS:
       return {
         ...state,
         hasRedirected: true,
         isAuthenticated: true,
-        session: action.session
-      }
+        session: action.session,
+      };
     case AUTH.LOGIN.FAILURE:
       return {
         ...state,
         hasRedirected: true,
         isAuthenticated: false,
-        errorMessage: action.message
-      }
+        errorMessage: action.message,
+      };
     default:
       return state;
   }
-}
+};

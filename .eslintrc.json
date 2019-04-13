@@ -1,0 +1,24 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended", "plugin:react-redux/recommended"],
+  "plugins": [
+      "react-redux"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "es5"
+      }
+    ]
+  }
+}

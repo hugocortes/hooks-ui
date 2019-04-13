@@ -1,5 +1,3 @@
-import * as authAction from './auth.js'
+import * as authAction from './auth';
 
-export {
-  authAction
-};
+export default { authAction };
