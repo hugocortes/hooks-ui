@@ -3,17 +3,19 @@ import { Button } from 'react-bootstrap';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
+import './button.scss';
+
 const TYPES = {
-  PRIMARY: 'primary',
-  WARNING: 'warning',
-  DANGER: 'danger',
-  SUCCESS: 'success',
+  PRIMARY: 'btn-primary',
+  WARNING: 'btn-warning',
+  DANGER: 'btn-danger',
+  SUCCESS: 'btn-success',
 };
 
 export const SIZES = {
-  SMALL: 'small',
-  MEDIUM: 'medium',
-  LARGE: 'large',
+  SMALL: 'sm',
+  MEDIUM: 'md',
+  LARGE: 'lg',
 };
 
 const BaseButton = ({
@@ -28,11 +30,8 @@ const BaseButton = ({
     type={type}
     disabled={disabled}
     onClick={onClick}
-    // classnames=(
-    //   styles.button,
-    //   styles[ buttonType ]
-    //   styles[ buttonSize ]
-    // )
+    size={buttonSize}
+    className={classnames('button', buttonType, buttonSize)}
   >
     {text}
   </Button>

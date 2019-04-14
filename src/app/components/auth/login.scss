@@ -1,0 +1,12 @@
+@media all and (min-width: 480px) {
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+  }
+  .login-button {
+    width: 500px;
+    margin: auto;
+  }
+}

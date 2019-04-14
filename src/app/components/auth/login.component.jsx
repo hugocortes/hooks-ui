@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import * as Button from '../button/button.component';
+import history from '../../common/history';
+
+import './login.scss';
 
 class Login extends Component {
   constructor(...args) {
@@ -15,6 +18,7 @@ class Login extends Component {
         search: PropTypes.string,
       }).isRequired,
       auth: PropTypes.shape({
+        isAuthenticated: PropTypes.bool.isRequired,
         redirectURI: PropTypes.string,
       }).isRequired,
       redirect: PropTypes.func.isRequired,
@@ -22,8 +26,17 @@ class Login extends Component {
   }
 
   async componentWillMount() {
-    const { redirect } = this.props;
+    const {
+      redirect,
+      auth: { isAuthenticated },
+    } = this.props;
+    if (isAuthenticated) {
+      return history.replace('');
+    }
+
     await redirect();
+
+    return true;
   }
 
   async redirect() {
@@ -37,13 +50,15 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        <Button.Primary
-          text="Login"
-          onClick={this.redirect}
-          type="submit"
-          disabled={false}
-          buttonSize={Button.SIZES.MEDIUM}
-        />
+        <div className="login-button">
+          <Button.Primary
+            text="Login"
+            onClick={this.redirect}
+            type="submit"
+            disabled={false}
+            buttonSize={Button.SIZES.LARGE}
+          />
+        </div>
       </div>
     );
   }
